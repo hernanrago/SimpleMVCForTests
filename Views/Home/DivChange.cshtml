@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<image
+    class="payment-method"
+    style="border: 1px solid #dcdcdc;"
+    src="https://i.pinimg.com/originals/76/47/9d/76479dd91dc55c2768ddccfc30a4fbf5.png" />
+
+<image
+    class="payment-method"
+    style="border: 1px solid #dcdcdc;"
+    src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $('.payment-method').click(function(){
+        $('.payment-method').css('border', '1px solid #dcdcdc');
+        $('.payment-method').removeAttr('selected');
+        $(this).css('border', '2px solid #00aeef');
+        $(this).attr('selected','');
+    });
+</script>

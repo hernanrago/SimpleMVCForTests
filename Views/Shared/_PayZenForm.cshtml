@@ -1,0 +1,24 @@
+@model string
+
+<div id="paymentForm" class="kr-embedded">
+
+    <!-- payment form fields -->
+    <div class="kr-pan"></div>
+    <div class="kr-expiry"></div>
+    <div class="kr-security-code"></div>
+
+    <!-- payment form submit button -->
+    <button class="kr-payment-button"></button>
+
+    <!-- error zone -->
+    <div class="kr-form-error"></div>
+</div>
+
+<script>
+    KR.setFormConfig({
+            'kr-post-url-success': '/PayZen/Success',
+            'kr-post-url-refused': '/PayZen/Refused'
+        });
+
+    KR.setFormToken('@Model');
+</script>

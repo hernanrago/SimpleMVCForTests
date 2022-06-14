@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div id="step">
+    <image src="https://www.trecebits.com/wp-content/uploads/2018/08/logo_one_icon.0-1-1.jpg" />
+</div>
+<div id="direction">
+    <a id="next-step">SIGUIENTE</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#next-step').click(getSecondStep);
+    });
+
+    function getFirstStep() {
+        $('#step').html('<image src="https://www.trecebits.com/wp-content/uploads/2018/08/logo_one_icon.0-1-1.jpg" />');
+        
+        $('#direction').empty();
+
+        addNextButton(getSecondStep);
+    }
+
+    function getSecondStep() {
+        $('#step').html('<image src="http://s4.thingpic.com/images/dx/8pyKnSZWSqkQ5zA1ZT633zFz.gif" />');
+        
+        $('#direction').empty();
+        
+        addPreviousButton(getFirstStep);
+        
+        addNextButton(getThirdStep);
+    }
+
+        function getThirdStep() {
+        $('#step').html('<image src="https://st.depositphotos.com/1001311/3411/i/600/depositphotos_34119619-stock-photo-3d-golden-number-collection-3.jpg" />');
+        
+        $('#direction').empty();
+        
+        addPreviousButton(getSecondStep);        
+    }
+
+    function addStepButton(id, text, handler){
+        let button = $(`<a id="${id}"></a>`).text(text);
+        button.click(handler);
+        $("#direction").append(button);
+    }
+
+    function addPreviousButton(handler) {
+        addStepButton('previous-step', 'VOLVER', handler);
+    }
+
+    function addNextButton(handler) {
+        addStepButton('next-step', 'SIGUIENTE', handler);
+    }
+</script>

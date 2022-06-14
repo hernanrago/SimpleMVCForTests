@@ -1,0 +1,38 @@
+@model SimpleMVCForTests.Controllers.CreatePaymentResponse
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Javascript library. Should be loaded in head section -->
+<script src="https://static.payzen.eu/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
+    kr-public-key="69876357:testpublickey_DEMOPUBLICKEY95me92597fd28tGD4r5">
+</script>
+
+<!-- theme and plugins. should be loaded after the javascript library -->
+<!-- not mandatory but helps to have a nice payment form out of the box -->
+<link rel="stylesheet" href="https://static.payzen.eu/static/js/krypton-client/V4.0/ext/classic-reset.css">
+
+<script src="https://static.payzen.eu/static/js/krypton-client/V4.0/ext/classic.js"></script>
+
+<div class="text-center">
+    <h1 class="display-4">PayZen</h1>
+</div>
+
+<a href="#" id="payzen-btn" class="btn btn-primary" role="button">Payzen Form</a>
+<div id="payzen-form" style="display: none;">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    const formToken = '@Model.Answer.FormToken';
+
+    $('#payzen-btn').click(function () {
+        $('#payzen-form').toggle();
+        if ($('#payzen-form').is(":visible")) {
+            $('#payzen-form').load('/PayZen/GetForm', { 'formToken': formToken });
+            //KR.setFormToken(formToken);
+        } else {
+            $('#payzen-form').empty();
+        }
+    });
+</script>
